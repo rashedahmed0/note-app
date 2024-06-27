@@ -16,7 +16,7 @@
             padding: 20px 30px;
         }
 
-        button {
+        .button {
             position: absolute;
             bottom: 7px;
             right: 7px;
@@ -41,23 +41,46 @@
         <img class="w-16" src="./images/notes.png" alt="">
         <h1 class="text-3xl font-bold text-white">Notes</h1>
     </div>
-    <div class="flex p-2 pl-4 mb-10 rounded-xl bg-teal-800 w-[25%] justify-start items-center ">
+    <div id="create" class="flex p-2 pl-4 mb-10 rounded-xl bg-teal-800 w-[25%] justify-start items-center ">
         <img class="w-7" src="./images/edit.png" alt="">
         <p class="text-xl font-medium text-white">Create Notes</p>
     </div>
-    <div class="pb-20">
-        <section class="note-area">
+    <div id="note-container" class="pb-20">
+        <!-- <section id="note-area" class="note-area">
             <textarea></textarea>
-            <button><img src="./images/delete.png" alt=""></button>
-        </section>
-        <div class="note-area">
-            <textarea></textarea>
-            <button><img src="./images/delete.png" alt=""></button>
-        </div>
+            <img id="delete" class="button" src="./images/delete.png" alt="">
+        </section> -->
+
     </div>
 </body>
 
 <script>
+    document.getElementById('create').addEventListener('click', function () {
+        const noteContainer = document.getElementById('note-container');
+
+        const section = document.createElement('section');
+        section.classList.add('note-area')
+
+        const textarea = document.createElement('textarea');
+        section.appendChild(textarea)
+
+        const img = document.createElement('img');
+        img.src = './images/delete.png'
+        img.classList.add('button')
+        section.appendChild(img)
+        img.addEventListener('click', function () {
+            event.target.parentElement.remove();
+        })
+
+        noteContainer.appendChild(section)
+
+
+
+    })
+
+
+
+
 
 </script>
 
